@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensagens Românticas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .message {
+      position: absolute;
+      color: #ffb6c1;
+      font-size: 1.2rem;
+      white-space: nowrap;
+      animation: fall linear infinite;
+      pointer-events: none;
+      text-shadow: 0 0 5px #fff, 0 0 10px #ff69b4;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  const mensagens = [
+    "Você é meu mundo 🌍",
+    "Te amo mais que chocolate 🍫",
+    "Seu sorriso ilumina meu dia ☀️",
+    "Sempre ao seu lado ❤️",
+    "Você me completa 💕",
+    "Amor da minha vida 💖",
+    "Com você, tudo é melhor 😍",
+    "Beijinhos 😘",
+    "Para sempre nós 💑"
+  ];
+
+  function criarMensagem() {
+    const mensagem = document.createElement("div");
+    mensagem.className = "message";
+    mensagem.textContent = mensagens[Math.floor(Math.random() * mensagens.length)];
+    mensagem.style.left = Math.random() * window.innerWidth + "px";
+    mensagem.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(mensagem);
+
+    setTimeout(() => {
+      mensagem.remove();
+    }, 8000);
+  }
+
+  setInterval(criarMensagem, 500);
+</script>
+
+</body>
+</html>
